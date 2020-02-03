@@ -1,0 +1,26 @@
+a=[10,80,30,90,40,50,70]
+
+def partition(A,p,r):
+    x=A[p]
+    i=p+1
+    for j in range(p+1,r+1):
+        if A[j]<x:
+            
+            temp=A[i]
+            A[i]=A[j]
+            A[j]=temp
+            i+=1
+    temp=A[i-1]
+    A[i-1]=A[p]
+    A[p]=temp
+    return i-1
+
+
+def QuickSort(A,p,r):
+    if p<r:
+        q=partition(A,p,r)
+        QuickSort(A,p,q-1)
+        QuickSort(A,q+1,r)
+    
+QuickSort(a,0,len(a)-1)
+print(a)
